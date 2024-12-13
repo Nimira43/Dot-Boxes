@@ -1,1 +1,1 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot } from './variables'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight } from './variables'
