@@ -14,3 +14,4 @@ export const colourAi = '#ffd700';
 export const colourAiLight = rgba(255, 217, 0, 0.5)
 export const colourPlayer = '#0742ba'
 export const colourPlayerLight =rgba(222, 134, 27, 0.5)
+export const tie ='#111111'
