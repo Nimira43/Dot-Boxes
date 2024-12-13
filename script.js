@@ -5,3 +5,8 @@ canvasEl.height = height
 canvasEl.width = width
 document.body.appendChild(canvasEl)
 let canvasRect = canvasEl.getBoundingClientRect()
+
+const ctx = canvasEl.getContext('2d')
+ctx.lineWidth = stroke
+ctx.textAlign = 'center'
+ctx.textBaseline = 'middle'
