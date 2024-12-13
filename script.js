@@ -1,0 +1,1 @@
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot } from './variables'

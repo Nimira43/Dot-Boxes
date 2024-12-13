@@ -9,4 +9,5 @@ body {
   overflow: hidden;
   display: flex;
   justify-content: center;
+  color: rgba(222, 134, 27, 0.6);
 }

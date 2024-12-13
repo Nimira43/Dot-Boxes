@@ -1,0 +1,16 @@
+export const height = 750
+export const gridSize = 10
+export const fps = 60
+export const delayEnd = 2
+export const width = height * 0.9
+export const cell = width / (gridSize + 2)
+export const stroke = cell / 12
+export const dot = stroke
+export const margin = height - (gridSize + 1) * cell
+export const colourBoard = '#0742ba'
+export const colourBorder = '#fffaf0'
+export const colourDot = '#0742ba'
+export const colourAi = '#ffd700';
+export const colourAiLight = rgba(255, 217, 0, 0.5)
+export const colourPlayer = '#0742ba'
+export const colourPlayerLight =rgba(222, 134, 27, 0.5)
