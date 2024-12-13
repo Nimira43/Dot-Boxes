@@ -10,3 +10,13 @@ const ctx = canvasEl.getContext('2d')
 ctx.lineWidth = stroke
 ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
+
+function playGame() {
+  requestAnimationFrame(playGame)
+  drawBoard()
+}
+
+function drawBoard() {
+  ctx.fillStyle = colourBoard
+  ctx.strokeStyle
+}
