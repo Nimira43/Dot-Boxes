@@ -43,4 +43,13 @@ function drawGrid() {
   }
 }
 
+function getGridX(col) {
+  return cell * (col + 1)
+}
+
+function getGridY(row) {
+  return margin + cell * row
+}
+
+
 playGame()
