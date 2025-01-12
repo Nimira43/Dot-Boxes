@@ -15,3 +15,13 @@ export const colourAiLight = 'rgba(0, 0, 255, 0.3)'
 export const colourPlayer = '#ff0000'
 export const colourPlayerLight = 'rgba(255, 0, 0, 0.3)'
 export const tie ='#111111'
+
+
+export const textAi = 'Computer'
+export const textAiSm = 'CPU'
+export const textPlayer = 'Player'
+export const textPlayerSm = 'P1'
+export const textSizeCell = cell / 2.5
+export const textSizeTop = margin / 6
+export const textTie = 'Tie'
+export const textWin = 'Won'
