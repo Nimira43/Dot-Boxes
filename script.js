@@ -11,6 +11,8 @@ ctx.lineWidth = stroke
 ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
 
+let currentCells, playersTurn, squares, scoreAI, scoreR1, timeEnd
+
 function playGame() {
   requestAnimationFrame(playGame)
   drawBoard()

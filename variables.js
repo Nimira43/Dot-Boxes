@@ -31,3 +31,4 @@ export const side = {
   right: 2,
   top: 3
 }
+
