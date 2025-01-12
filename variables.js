@@ -16,7 +16,6 @@ export const colourPlayer = '#ff0000'
 export const colourPlayerLight = 'rgba(255, 0, 0, 0.3)'
 export const tie ='#111111'
 
-
 export const textAi = 'Computer'
 export const textAiSm = 'CPU'
 export const textPlayer = 'Player'
@@ -25,3 +24,10 @@ export const textSizeCell = cell / 2.5
 export const textSizeTop = margin / 6
 export const textTie = 'Tie'
 export const textWin = 'Won'
+
+export const side = {
+  bottom: 0,
+  left: 1,
+  right: 2,
+  top: 3
+}
