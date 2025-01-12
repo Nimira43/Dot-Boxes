@@ -103,7 +103,36 @@ function selectSide() {
 }
 
 class Square {
+  constructor(x, y, w, h) {
+    this.w = w
+    this. h = h
+    this.bottom = y + h
+    this.left = x
+    this.right = x + w
+    this.top = y
+    this.highlight = null
+    this.numSelected = 0
+    this.owner = null
 
+  }
+  contains = (x, y) => {
+
+  }
+  drawFill = () => {
+
+  }
+  drawSide = (side, colour) => {
+
+  }
+  drawSides = () => {
+
+  }
+  highlightSide = (x, y) => {
+
+  }
+  selectSide = () => {
+    
+  }
 }
 
 newGame()
