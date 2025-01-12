@@ -11,11 +11,15 @@ ctx.lineWidth = stroke
 ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
 
-let currentCells, playersTurn, squares, scoreAI, scoreR1, timeEnd
+let currentCells, playersTurn, squares, scoreAI, scoreRI, timeEnd
 
 function playGame() {
   requestAnimationFrame(playGame)
   drawBoard()
+}
+
+function click(e) {
+
 }
 
 function drawBoard() {
@@ -45,6 +49,30 @@ function drawGrid() {
   }
 }
 
+function drawLine(x0, y0, x1, y1, colour) {
+
+}
+
+function drawScores() {
+
+}
+
+function drawSquares() {
+
+}
+
+function drawText(text, x, y, colour, size) {
+
+}
+
+function getColour(player, light) {
+
+}
+
+function getText(player, small) {
+
+}
+
 function getGridX(col) {
   return cell * (col + 1)
 }
@@ -53,5 +81,30 @@ function getGridY(row) {
   return margin + cell * row
 }
 
+function hightlightGrid(e) {
 
+}
+
+function highlightSide(x, y) {
+
+}
+
+function newGame() {
+  currentCells = []
+  playersTurn = Math.random() >= 0.5
+  scoreAI = 0
+  scoreRI = 0 
+  timeEnd = 0
+  squares = []
+}
+
+function selectSide() {
+
+}
+
+class Square {
+
+}
+
+newGame()
 playGame()
