@@ -1,4 +1,4 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, tie, textSizeCell } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, tie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi } from './variables.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -78,7 +78,15 @@ function getColour(player, light) {
 }
 
 function getText(player, small) {
-
+  if (player) {
+    return small 
+    ? textPlayerSm
+    : textPlayer
+  } else {
+    return small 
+    ? textAiSm 
+    : textAi
+  }
 }
 
 function getGridX(col) {
