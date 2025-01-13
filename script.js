@@ -1,4 +1,38 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, side, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
+// import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, side, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
+
+const height = 700
+const gridSize = 10
+const fps = 60
+const delayEnd = 2
+const width = height * 0.9
+const cell = width / (gridSize + 2)
+const stroke = cell / 12
+const dot = stroke
+const margin = height - (gridSize + 1) * cell
+const colourBoard = '#000000'
+const colourBorder = '#ff4500'
+const colourDot = '#fffaf0'
+const colourAi = '#0000ff';
+const colourAiLight = 'rgba(0, 0, 255, 0.3)'
+const colourPlayer = '#ff0000'
+const colourPlayerLight = 'rgba(255, 0, 0, 0.3)'
+const colourTie ='#ffd700'
+
+const textAi = 'Computer'
+const textAiSm = 'CPU'
+const textPlayer = 'Player'
+const textPlayerSm = 'P1'
+const textSizeCell = cell / 2.5
+const textSizeTop = margin / 6
+const textTie = 'Tie'
+const textWin = 'Won'
+
+const sideObject = {
+  bottom: 0,
+  left: 1,
+  right: 2,
+  top: 3
+}
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -11,7 +45,12 @@ ctx.lineWidth = stroke
 ctx.textAlign = 'center'
 ctx.textBaseline = 'middle'
 
-let currentCells, playersTurn, squares, scoreAI, scoreRI, timeEnd
+let currentCells
+let playersTurn 
+let squares
+let scoreAI 
+let scoreRI 
+let timeEnd
 
 canvasEl.addEventListener('mousemove', highlightGrid)
   
@@ -23,14 +62,13 @@ function playGame() {
   drawSquares()
   drawGrid()
   drawScores()
-  console.log('playGame called')
 }
 
 function click(e) {
   if (timeEnd > 0) {
     return
   }
-  console.log('click event detected')
+
   selectSide()
 }
 
@@ -70,14 +108,14 @@ function drawLine(x0, y0, x1, y1, colour) {
 }
 
 function drawScores() {
-  let drawComputerScore = playersTurn ? colourAiLight : colourAi
-  let drawPlayerScore = playersTurn ? colourPlayer : colourPlayerLight
+  let colourAI = playersTurn ? colourAiLight : colourAi
+  let colourRI = playersTurn ? colourPlayer : colourPlayerLight
 
   drawText(
     textPlayer, 
     width * 0.25, 
     margin * 0.25,
-    drawPlayerScore,
+    colourRI,
     textSizeTop
   )
 
@@ -85,7 +123,7 @@ function drawScores() {
     scoreRI,
     width * 0.25,
     margin * 0.6,
-    drawPlayerScore,
+    colourRI,
     textSizeTop * 2
   )
 
@@ -93,7 +131,7 @@ function drawScores() {
     textAi, 
     width * 0.75, 
     margin * 0.25,
-    drawComputerScore,
+    colourAI,
     textSizeTop 
   )
 
@@ -101,7 +139,7 @@ function drawScores() {
     scoreAI,
     width * 0.75,
     margin * 0.6,
-    drawComputerScore,
+    colourAI,
     textSizeTop * 2
   )
 
@@ -202,11 +240,10 @@ function highlightSide(x, y) {
       square.highlight = null
     }
   }
-
   let rows = squares.length
   let cols = squares[0].length
   currentCells = []
-
+  
   OUTER: for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
       if (squares[i][j].contains(x, y)) {
@@ -214,54 +251,40 @@ function highlightSide(x, y) {
 
         if (side != null) {
           currentCells.push({ row: i, col: j })
+        }
 
-          let row = i
-          let col = j
-          let highlight
-          let neighbour = true
+        let row = i,
+        col = j,
+        highlight,
+        neighbour = true
 
-          switch (side) {
-            case side.left:
-              if (j > 0) {
-                col = j - 1
-                highlight = side.right
-              } else {
-                neighbour = false
-              }
-              break
-            case side.right:
-              if (j < cols - 1) {
-                col = j + 1
-                highlight = side.left
-              } else {
-                neighbour = false
-              }
-              break
-            case side.top:
-              if (i > 0) {
-                row = i - 1
-                highlight = side.bottom
-              } else {
-                neighbour = false
-              }
-              break;
-            case side.bottom:
-              if (i < rows - 1) {
-                row = i + 1
-                highlight = side.top
-              } else {
-                neighbour = false
-              }
-              break
-            default:
-              neighbour = false
-              break
-          }
+        if (
+          side == sideObject.left && j > 0
+        ) {
+          col = j - 1
+          highlight = sideObject.right
+        } else if (
+          side == sideObject.right && j < cols - 1
+        ) {
+          col = j + 1
+          highlight = sideObject.left
+        } else if (
+          side == sideObject.top && i > 0
+        ) {
+          row = i - 1
+          highlight = sideObject.bottom
+        } else if (
+          side == sideObject.bottom && i < rows - 1
+        ) {
+          row = i + 1
+          highlight = sideObject.top
+        } else {
+          neighbour = false
+        }
 
-          if (neighbour) {
-            squares[row][col].highlight = highlight
-            currentCells.push({ row: row, col: col })
-          }
+        if (neighbour) {
+          squares[row][col].highlight = highlight
+          currentCells.push({ row: row, col: col })
         }
         break OUTER
       }
@@ -361,22 +384,22 @@ class Square {
   }
   drawSide = (side, colour) => {
     switch (side) {
-      case side.bottom:
+      case sideObject.bottom:
         drawLine(this.left, this.bottom, this.right, this.bottom, colour);
         break;
-      case side.left:
+      case sideObject.left:
         drawLine(this.left, this.top, this.left, this.bottom, colour);
         break;
-      case side.right:
+      case sideObject.right:
         drawLine(this.right, this.top, this.right, this.bottom, colour);
         break;
-      case side.top:
+      case sideObject.top:
         drawLine(this.left, this.top, this.right, this.top, colour);
         break;
     }
   }
   drawSides = () => {
-    console.log('drawSides called for square:', this.left, this.top)
+  
     if (this.highlight != null) {
       this.drawSide(
         this.highlight, 
@@ -385,25 +408,25 @@ class Square {
     }
     if (this.sideBottom.selected) {
       this.drawSide(
-        side.bottom, 
+        sideObject.bottom, 
         getColour(this.sideBottom.owner, false)
       )
     }
     if (this.sideLeft.selected) {
       this.drawSide(
-        side.left, 
+        sideObject.left, 
         getColour(this.sideLeft.owner, false)
       )
     }
     if (this.sideRight.selected) {
       this.drawSide(
-        side.right, 
+        sideObject.right, 
         getColour(this.sideRight.owner, false)
       )
     }
     if (this.sideTop.selected) {
       this.drawSide(
-        side.top, 
+        sideObject.top, 
         getColour(this.sideTop.owner, false)
       )
     }
@@ -419,17 +442,17 @@ class Square {
       distRight,
       distTop
     )
-    console.log('highlightSide called for square:', this.left, this.top)
+    
     if (distClosest === distBottom && !this.sideBottom.selected) {
-      this.highlight = side.bottom
+      this.highlight = sideObject.bottom
     } else if (distClosest === distLeft && !this.sideLeft.selected) {
-      this.highlight = side.left
+      this.highlight = sideObject.left
     } else if (distClosest === distRight && !this.sideRight.selected) {
-      this.highlight = side.right
+      this.highlight = sideObject.right
     } else if (distClosest === distTop && !this.sideTop.selected) {
-      this.highlight = side.top
+      this.highlight = sideObject.top
     }
-    console.log('Highlight set to:', this.highlight)
+   
     return this.highlight
   }
   
@@ -439,19 +462,19 @@ class Square {
     }
 
     switch (this.highlight) {
-      case side.bottom:
+      case sideObject.bottom:
         this.sideBottom.owner = playersTurn
         this.sideBottom.selected = true
         break
-      case side.left:
+      case sideObject.left:
         this.sideLeft.owner = playersTurn
         this.sideLeft.selected = true
         break
-      case side.right:
+      case sideObject.right:
         this.sideRight.owner = playersTurn
         this.sideRight.selected = true
         break
-      case side.top:
+      case sideObject.top:
         this.sideTop.owner = playersTurn
         this.sideTop.selected = true
         break
