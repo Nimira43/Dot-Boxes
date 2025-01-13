@@ -284,9 +284,30 @@ class Square {
     }
     return this.highlight
   }
-  
-  selectSide = () => {
 
+  selectSide = () => {
+    if (this.height == null) {
+      return
+    }
+
+    switch (this.highlight) {
+      case side.bottom:
+        this.sideBottom.owner = playersTurn
+        this.sideBottom.selected = true
+        break
+      case side.left:
+        this.sideLeft.owner = playersTurn
+        this.sideLeft.selected = true
+        break
+      case side.right:
+        this.sideRight.owner = playersTurn
+        this.sideRight.selected = true
+        break
+      case side.top:
+        this.sideTop.owner = playersTurn
+        this.sideTop.selected = true
+        break
+    }
   }
 }
 
