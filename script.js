@@ -223,7 +223,36 @@ class Square {
     }
   }
   drawSides = () => {
-
+    if (this.highlight != null) {
+      this.drawSide(
+        this.highlight, 
+        getColour(playersTurn, true)
+      )
+    }
+    if (this.sideBottom.selected) {
+      this.drawSide(
+        side.bottom, 
+        getColour(this.sideBottom.owner, false)
+      )
+    }
+    if (this.sideLeft.selected) {
+      this.drawSide(
+        side.left, 
+        getColour(this.sideLeft.owner, false)
+      )
+    }
+    if (this.sideRight.selected) {
+      this.drawSide(
+        side.right, 
+        getColour(this.sideRight.owner, false)
+      )
+    }
+    if (this.sideTop.selected) {
+      this.drawSide(
+        side.top, 
+        getColour(this.sideTop.owner, false)
+      )
+    }
   }
   highlightSide = (x, y) => {
 
