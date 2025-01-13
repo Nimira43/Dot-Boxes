@@ -62,7 +62,7 @@ function drawScores() {
 }
 
 function drawSquares() {
-
+  // double loop and then drawSides() and drawFill()
 }
 
 function drawText(text, x, y, colour, size) {
@@ -183,7 +183,44 @@ class Square {
     )
   }
   drawSide = (side, colour) => {
-
+    switch (side) {
+      case side.bottom:
+        drawLine(
+          this.left,
+          this.bottom,
+          this.right,
+          this.bottom,
+          colour
+        )
+        break
+      case side.left:
+        drawLine(
+          this.left,
+          this.top,
+          this.left,
+          this.bottom,
+          colour
+        )
+        break
+      case side.right:
+        drawLine(
+          this.right,
+          this.top,
+          this.right,
+          this.bottom,
+          colour
+        )
+        break
+      case side.top:
+        drawLine(
+          this.left,
+          this.top,
+          this.right,
+          this.top,
+          colour
+        )
+        break
+    }
   }
   drawSides = () => {
 
