@@ -16,6 +16,8 @@ let currentCells, playersTurn, squares, scoreAI, scoreRI, timeEnd
 function playGame() {
   requestAnimationFrame(playGame)
   drawBoard()
+  drawSquares()
+  drawGrid()
 }
 
 function click(e) {
