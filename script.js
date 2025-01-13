@@ -146,9 +146,42 @@ function highlightSide(x, y) {
             col: j
           })
         }
-        
-        // neighbouring logic
-        
+        let row = i 
+        let col = j
+        let highlight
+        let neighbour = true
+
+        if (
+          side == side.left && j > 0
+        ) {
+          col = j - 1
+          highlight = side.right
+        } else if ( 
+          side == side.right && j < cols - 1
+        ) {
+          col = j + 1
+          highlight = side.left
+        } else if ( 
+          side == side.top && i > 0
+        ) {
+          row = i - 1
+          highlight = side.bottom
+        } else if ( 
+          side == side.bottom && i < rows - 1
+        ) {
+          row = i + 1
+          highlight = side.top
+        } else {
+          neighbour = false
+        }
+
+        if (neighbour) {
+          squares[row][col].highlight = highlight
+          currentCells.push({
+            row: row,
+            col: col
+          })
+        } 
       break OUTER
       }
     }
