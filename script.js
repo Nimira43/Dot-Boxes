@@ -50,7 +50,11 @@ function drawGrid() {
 }
 
 function drawLine(x0, y0, x1, y1, colour) {
-
+  ctx.strokeStyle = colour
+  ctx.beginPath()
+  ctx.moveTo(x0, y0)
+  ctx.lineTo(x1, y1)
+  ctx.stroke()
 }
 
 function drawScores() {
