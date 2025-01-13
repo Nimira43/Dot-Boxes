@@ -66,7 +66,15 @@ function drawText(text, x, y, colour, size) {
 }
 
 function getColour(player, light) {
-
+  if (player) {
+    return light 
+    ? colourPlayerLight 
+    : colourPlayer 
+  } else {
+    return light
+    ? colourAiLight
+    : colourAi
+  }
 }
 
 function getText(player, small) {
