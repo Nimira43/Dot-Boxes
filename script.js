@@ -1,5 +1,7 @@
 import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
+import { getColour, getText, getGridX, getGridY } from './getters.js'
+
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
 canvasEl.width = width
@@ -158,37 +160,7 @@ function drawText(text, x, y, colour, size) {
   ctx.fillText(text, x, y)
 }
 
-function getColour(player, light) {
-  if (player) {
-    return light 
-    ? colourPlayerLight 
-    : colourPlayer 
-  } else {
-    return light
-    ? colourAiLight
-    : colourAi
-  }
-}
 
-function getText(player, small) {
-  if (player) {
-    return small 
-    ? textPlayerSm
-    : textPlayer
-  } else {
-    return small 
-    ? textAiSm 
-    : textAi
-  }
-}
-
-function getGridX(col) {
-  return cell * (col + 1)
-}
-
-function getGridY(row) {
-  return margin + cell * row
-}
 
 function highlightGrid(e) {
   if (timeEnd > 0) {
