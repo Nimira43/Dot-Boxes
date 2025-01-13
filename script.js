@@ -1,38 +1,4 @@
-// import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, side, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
-
-const height = 700
-const gridSize = 10
-const fps = 60
-const delayEnd = 2
-const width = height * 0.9
-const cell = width / (gridSize + 2)
-const stroke = cell / 12
-const dot = stroke
-const margin = height - (gridSize + 1) * cell
-const colourBoard = '#000000'
-const colourBorder = '#ff4500'
-const colourDot = '#fffaf0'
-const colourAi = '#0000ff';
-const colourAiLight = 'rgba(0, 0, 255, 0.3)'
-const colourPlayer = '#ff0000'
-const colourPlayerLight = 'rgba(255, 0, 0, 0.3)'
-const colourTie ='#ffd700'
-
-const textAi = 'Computer'
-const textAiSm = 'CPU'
-const textPlayer = 'Player'
-const textPlayerSm = 'P1'
-const textSizeCell = cell / 2.5
-const textSizeTop = margin / 6
-const textTie = 'Tie'
-const textWin = 'Won'
-
-const sideObject = {
-  bottom: 0,
-  left: 1,
-  right: 2,
-  top: 3
-}
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -68,7 +34,6 @@ function click(e) {
   if (timeEnd > 0) {
     return
   }
-
   selectSide()
 }
 
