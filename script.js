@@ -76,12 +76,29 @@ function drawScores() {
     drawPlayerScore,
     textSizeTop
   )
+
+  drawText(
+    scoreRI,
+    width * 0.25,
+    margin * 0.6,
+    drawPlayerScore,
+    textSizeTop * 2
+  )
+
   drawText(
     textAi, 
     width * 0.75, 
     margin * 0.25,
     drawComputerScore,
-    textSizeTop *
+    textSizeTop 
+  )
+
+  drawText(
+    scoreAI,
+    width * 0.75,
+    margin * 0.6,
+    drawComputerScore,
+    textSizeTop * 2
   )
 }
 
