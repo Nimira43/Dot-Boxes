@@ -1,4 +1,4 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, side, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -13,7 +13,8 @@ ctx.textBaseline = 'middle'
 
 let currentCells, playersTurn, squares, scoreAI, scoreRI, timeEnd
 
-canvasEl.addEventListener('mousemove', hightlightGrid)
+canvasEl.addEventListener('mousemove', highlightGrid)
+  
 canvasEl.addEventListener('click', click)
 
 function playGame() {
@@ -22,12 +23,14 @@ function playGame() {
   drawSquares()
   drawGrid()
   drawScores()
+  console.log('playGame called')
 }
 
 function click(e) {
   if (timeEnd > 0) {
     return
   }
+  console.log('click event detected')
   selectSide()
 }
 
@@ -149,7 +152,7 @@ function drawSquares() {
 function drawText(text, x, y, colour, size) {
   ctx.fillStyle = colour
   ctx.font = `${size}px sans-serif`
-  ctx.fillText(text(text, x, y))
+  ctx.fillText(text, x, y)
 }
 
 function getColour(player, light) {
@@ -184,7 +187,7 @@ function getGridY(row) {
   return margin + cell * row
 }
 
-function hightlightGrid(e) {
+function highlightGrid(e) {
   if (timeEnd > 0) {
     return
   }
@@ -359,44 +362,21 @@ class Square {
   drawSide = (side, colour) => {
     switch (side) {
       case side.bottom:
-        drawLine(
-          this.left,
-          this.bottom,
-          this.right,
-          this.bottom,
-          colour
-        )
-        break
+        drawLine(this.left, this.bottom, this.right, this.bottom, colour);
+        break;
       case side.left:
-        drawLine(
-          this.left,
-          this.top,
-          this.left,
-          this.bottom,
-          colour
-        )
-        break
+        drawLine(this.left, this.top, this.left, this.bottom, colour);
+        break;
       case side.right:
-        drawLine(
-          this.right,
-          this.top,
-          this.right,
-          this.bottom,
-          colour
-        )
-        break
+        drawLine(this.right, this.top, this.right, this.bottom, colour);
+        break;
       case side.top:
-        drawLine(
-          this.left,
-          this.top,
-          this.right,
-          this.top,
-          colour
-        )
-        break
+        drawLine(this.left, this.top, this.right, this.top, colour);
+        break;
     }
   }
   drawSides = () => {
+    console.log('drawSides called for square:', this.left, this.top)
     if (this.highlight != null) {
       this.drawSide(
         this.highlight, 
@@ -439,19 +419,20 @@ class Square {
       distRight,
       distTop
     )
-
-    if (distClosest == distBottom && !this.sideBottom.selected) {
+    console.log('highlightSide called for square:', this.left, this.top)
+    if (distClosest === distBottom && !this.sideBottom.selected) {
       this.highlight = side.bottom
-    } else if (distClosest == distLeft && !this.sideLeft.selected) {
+    } else if (distClosest === distLeft && !this.sideLeft.selected) {
       this.highlight = side.left
-    } else if (distClosest == distRight && !this.sideRight.selected) {
+    } else if (distClosest === distRight && !this.sideRight.selected) {
       this.highlight = side.right
-    } else if (distClosest == distTop && !this.sideTop.selected) {
+    } else if (distClosest === distTop && !this.sideTop.selected) {
       this.highlight = side.top
     }
+    console.log('Highlight set to:', this.highlight)
     return this.highlight
   }
-
+  
   selectSide = () => {
     if (this.highlight == null) {
       return
