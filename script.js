@@ -134,6 +134,25 @@ function highlightSide(x, y) {
   let rows = squares.length
   let cols = squares[0].length
   currentCells = []
+
+  OUTER: for (let i = 0; i < rows; i ++) {
+    for (let j = 0; j < cols; j++) {
+      if (squares[i][j].contain(x, y)) {
+        let side = squares[i][j].highlightSide(x,y)
+
+        if (side != null) {
+          currentCells.push({
+            row: i,
+            col: j
+          })
+        }
+        
+        // neighbouring logic
+        
+      break OUTER
+      }
+    }
+  }
 }
 
 function newGame() {
