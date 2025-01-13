@@ -214,7 +214,24 @@ function newGame() {
 }
 
 function selectSide() {
+  if (currentCells == null || currentCells.length == 0) {
+    return
+  }
+  let filledSquare = false
+  for (let cell of currentCells) {
+    if (squares[cell.row][cell.col].selectSide()) {
+      filledSquare = true
+    }
+  }
+  currentCells = []
 
+  if (filledSquare) {
+    if (scoreRI + scoreAI == gridSize * gridSize) {
+      timeEnd = Math.ceil(delayEnd * fps)
+    } 
+  } else {
+    playersTurn = !playersTurn
+  }
 }
 
 class Square {
