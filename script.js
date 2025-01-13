@@ -62,7 +62,12 @@ function drawScores() {
 }
 
 function drawSquares() {
-  // double loop and then drawSides() and drawFill()
+  for (let row of squares) {
+    for (let square of row) {
+      square.drawSides()
+      square.drawFill()
+    }
+  }
 }
 
 function drawText(text, x, y, colour, size) {
