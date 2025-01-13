@@ -117,7 +117,11 @@ function getGridY(row) {
 }
 
 function hightlightGrid(e) {
-
+  if (timeEnd > 0) {
+    return
+  }
+  let x = e.clientX - canvasRect.left
+  let y = e.clientY - canvasRect.top
 }
 
 function highlightSide(x, y) {
