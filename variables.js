@@ -25,7 +25,7 @@ export const textSizeTop = margin / 6
 export const textTie = 'Tie'
 export const textWin = 'Won'
 
-export const side = {
+export const sideObject = {
   bottom: 0,
   left: 1,
   right: 2,
