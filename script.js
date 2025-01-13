@@ -21,7 +21,10 @@ function playGame() {
 }
 
 function click(e) {
-
+  if (timeEnd > 0) {
+    return
+  }
+  selectSide()
 }
 
 function drawBoard() {
