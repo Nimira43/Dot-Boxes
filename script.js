@@ -122,6 +122,7 @@ function hightlightGrid(e) {
   }
   let x = e.clientX - canvasRect.left
   let y = e.clientY - canvasRect.top
+  highlightSide(x, y)
 }
 
 function highlightSide(x, y) {
