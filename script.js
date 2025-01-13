@@ -96,6 +96,13 @@ function newGame() {
   scoreRI = 0 
   timeEnd = 0
   squares = []
+
+  for (let i = 0; i < gridSize; i++) {
+    squares[i] = []
+    for (let j = 0; j < gridSize; j++) {
+      squares[i][j] = new Square(getGridX(j), getGridY(i), cell, cell)
+    }
+  }
 }
 
 function selectSide() {
@@ -113,10 +120,28 @@ class Square {
     this.highlight = null
     this.numSelected = 0
     this.owner = null
-
+    this.sideBottom = {
+      owner: null, 
+      selected: false
+    }
+    this.sideLeft = {
+      owner: null, 
+      selected: false
+    }
+    this.sideRight = {
+      owner: null, 
+      selected: false
+    }
+    this.sideTop = {
+      owner: null, 
+      selected: false
+    }
   }
   contains = (x, y) => {
-
+    return x >= this.left && 
+           x < this.right &&
+           y >= this.top &&
+           y < this.bottom
   }
   drawFill = () => {
 
@@ -131,7 +156,7 @@ class Square {
 
   }
   selectSide = () => {
-    
+
   }
 }
 
