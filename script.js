@@ -286,7 +286,7 @@ class Square {
   }
 
   selectSide = () => {
-    if (this.height == null) {
+    if (this.highlight == null) {
       return
     }
 
@@ -308,6 +308,19 @@ class Square {
         this.sideTop.selected = true
         break
     }
+    this.highlight = null
+    this.numSelected++
+
+    if (this.numSelected == 4) {
+      this.owner = playersTurn
+      if (playersTurn) {
+        scoreRI++
+      } else {
+        scoreAI++
+      }
+      return true
+    }
+    return false
   }
 }
 
