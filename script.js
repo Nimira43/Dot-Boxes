@@ -1,4 +1,4 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, tie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -21,6 +21,7 @@ function playGame() {
   drawBoard()
   drawSquares()
   drawGrid()
+  drawScores()
 }
 
 function click(e) {
@@ -100,6 +101,40 @@ function drawScores() {
     drawComputerScore,
     textSizeTop * 2
   )
+
+  if (timeEnd > 0) {
+    timeEnd--
+    if (scoreRI == scoreAI) {
+      drawText(
+        textTie,
+        width * 0.5,
+        margin * 0.6,
+        colourTie,
+        textSizeTop
+      ) 
+    } else {
+      let playerWins = scoreRI > scoreAI
+      let colour = playerWins ? colourPlayer : colourAi
+      let text = playerWins ? textPlayer : textAi
+      drawText(
+        text,
+        width * 0.5,
+        margin * 0.5,
+        colour,
+        textSizeTop
+      )
+      drawText(
+        textWin, 
+        width * 0.5,
+        margin * 0.7,
+        colour,
+        textSizeTop
+      )
+    }
+    if (timeEnd == 0) {
+      newGame()
+    }
+  }
 }
 
 function drawSquares() {

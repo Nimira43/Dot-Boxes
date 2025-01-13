@@ -14,7 +14,7 @@ export const colourAi = '#0000ff';
 export const colourAiLight = 'rgba(0, 0, 255, 0.3)'
 export const colourPlayer = '#ff0000'
 export const colourPlayerLight = 'rgba(255, 0, 0, 0.3)'
-export const tie ='#111111'
+export const colourTie ='#111111'
 
 export const textAi = 'Computer'
 export const textAiSm = 'CPU'
