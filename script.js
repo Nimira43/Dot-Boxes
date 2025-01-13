@@ -66,7 +66,9 @@ function drawSquares() {
 }
 
 function drawText(text, x, y, colour, size) {
-
+  ctx.fillStyle = colour
+  ctx.font = `${size}px sans-serif`
+  ctx.fillText(text(text, x, y))
 }
 
 function getColour(player, light) {
