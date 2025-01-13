@@ -1,4 +1,4 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, tie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, tie, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop } from './variables.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -66,7 +66,23 @@ function drawLine(x0, y0, x1, y1, colour) {
 }
 
 function drawScores() {
+  let drawComputerScore = playersTurn ? colourAiLight : colourAi
+  let drawPlayerScore = playersTurn ? colourPlayer : colourPlayerLight
 
+  drawText(
+    textPlayer, 
+    width * 0.25, 
+    margin * 0.25,
+    drawPlayerScore,
+    textSizeTop
+  )
+  drawText(
+    textAi, 
+    width * 0.75, 
+    margin * 0.25,
+    drawComputerScore,
+    textSizeTop *
+  )
 }
 
 function drawSquares() {
