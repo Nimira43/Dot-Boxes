@@ -13,6 +13,9 @@ ctx.textBaseline = 'middle'
 
 let currentCells, playersTurn, squares, scoreAI, scoreRI, timeEnd
 
+canvasEl.addEventListener('mousemove', hightlightGrid)
+canvasEl.addEventListener('click', click)
+
 function playGame() {
   requestAnimationFrame(playGame)
   drawBoard()
