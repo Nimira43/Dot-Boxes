@@ -262,7 +262,16 @@ class Square {
     }
   }
   highlightSide = (x, y) => {
-
+    let distBottom = this.bottom - y
+    let distLeft = x - this.left
+    let distRight = this.right - x
+    let distTop = y - this.top
+    let distClosest = Math.min(
+      distBottom,
+      distLeft,
+      distRight,
+      distTop
+    )
   }
   selectSide = () => {
 
