@@ -125,7 +125,15 @@ function hightlightGrid(e) {
 }
 
 function highlightSide(x, y) {
-
+  for (let row of squares) {
+    for (let square of row) {
+      square.highlight = null
+    }
+  }
+  
+  let rows = squares.length
+  let cols = squares[0].length
+  currentCells = []
 }
 
 function newGame() {
