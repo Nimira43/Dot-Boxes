@@ -272,7 +272,19 @@ class Square {
       distRight,
       distTop
     )
+
+    if (distClosest == distBottom && !this.sideBottom.selected) {
+      this.highlight = side.bottom
+    } else if (distClosest == distLeft && !this.sideLeft.selected) {
+      this.highlight = side.left
+    } else if (distClosest == distRight && !this.sideRight.selected) {
+      this.highlight = side.right
+    } else if (distClosest == distTop && !this.sideTop.selected) {
+      this.highlight = side.top
+    }
+    return this.highlight
   }
+  
   selectSide = () => {
 
   }
