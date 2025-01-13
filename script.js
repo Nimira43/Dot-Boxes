@@ -130,59 +130,68 @@ function highlightSide(x, y) {
       square.highlight = null
     }
   }
-  
+
   let rows = squares.length
   let cols = squares[0].length
   currentCells = []
 
-  OUTER: for (let i = 0; i < rows; i ++) {
+  OUTER: for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
-      if (squares[i][j].contain(x, y)) {
-        let side = squares[i][j].highlightSide(x,y)
+      if (squares[i][j].contains(x, y)) {
+        let side = squares[i][j].highlightSide(x, y)
 
         if (side != null) {
-          currentCells.push({
-            row: i,
-            col: j
-          })
-        }
-        let row = i 
-        let col = j
-        let highlight
-        let neighbour = true
+          currentCells.push({ row: i, col: j })
 
-        if (
-          side == side.left && j > 0
-        ) {
-          col = j - 1
-          highlight = side.right
-        } else if ( 
-          side == side.right && j < cols - 1
-        ) {
-          col = j + 1
-          highlight = side.left
-        } else if ( 
-          side == side.top && i > 0
-        ) {
-          row = i - 1
-          highlight = side.bottom
-        } else if ( 
-          side == side.bottom && i < rows - 1
-        ) {
-          row = i + 1
-          highlight = side.top
-        } else {
-          neighbour = false
-        }
+          let row = i
+          let col = j
+          let highlight
+          let neighbour = true
 
-        if (neighbour) {
-          squares[row][col].highlight = highlight
-          currentCells.push({
-            row: row,
-            col: col
-          })
-        } 
-      break OUTER
+          switch (side) {
+            case side.left:
+              if (j > 0) {
+                col = j - 1
+                highlight = side.right
+              } else {
+                neighbour = false
+              }
+              break
+            case side.right:
+              if (j < cols - 1) {
+                col = j + 1
+                highlight = side.left
+              } else {
+                neighbour = false
+              }
+              break
+            case side.top:
+              if (i > 0) {
+                row = i - 1
+                highlight = side.bottom
+              } else {
+                neighbour = false
+              }
+              break;
+            case side.bottom:
+              if (i < rows - 1) {
+                row = i + 1
+                highlight = side.top
+              } else {
+                neighbour = false
+              }
+              break
+            default:
+              neighbour = false
+              break
+          }
+
+          if (neighbour) {
+            squares[row][col].highlight = highlight
+            currentCells.push({ row: row, col: col })
+          }
+        }
+        break OUTER
       }
     }
   }
