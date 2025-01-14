@@ -2,13 +2,13 @@ import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colo
 
 import { getColour, getText, getGridX, getGridY } from './getters.js'
 
-import { drawGrid } from './draw.js'
+import { drawGrid, highlightGrid } from './grid.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
 canvasEl.width = width
 document.body.appendChild(canvasEl)
-let canvasRect = canvasEl.getBoundingClientRect()
+export let canvasRect = canvasEl.getBoundingClientRect()
 
 const ctx = canvasEl.getContext('2d')
 ctx.lineWidth = stroke
@@ -20,7 +20,7 @@ let playersTurn
 let squares
 let scoreAI 
 let scoreRI 
-let timeEnd
+export let timeEnd
 
 canvasEl.addEventListener('mousemove', highlightGrid)
   
@@ -60,8 +60,6 @@ export function drawDot(x, y) {
   ctx.fill()
 }
  
-
-
 function drawLine(x0, y0, x1, y1, colour) {
   ctx.strokeStyle = colour
   ctx.beginPath()
@@ -156,18 +154,7 @@ function drawText(text, x, y, colour, size) {
   ctx.fillText(text, x, y)
 }
 
-
-
-function highlightGrid(e) {
-  if (timeEnd > 0) {
-    return
-  }
-  let x = e.clientX - canvasRect.left
-  let y = e.clientY - canvasRect.top
-  highlightSide(x, y)
-}
-
-function highlightSide(x, y) {
+export function highlightSide(x, y) {
   for (let row of squares) {
     for (let square of row) {
       square.highlight = null
