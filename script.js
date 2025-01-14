@@ -1,4 +1,4 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayer, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
 import { getColour, getText, getGridX, getGridY } from './getters.js'
 
