@@ -160,8 +160,6 @@ function drawText(text, x, y, colour, size) {
   ctx.fillText(text, x, y)
 }
 
-
-
 function highlightGrid(e) {
   if (timeEnd > 0) {
     return
