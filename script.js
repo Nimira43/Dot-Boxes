@@ -1,6 +1,8 @@
-import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayerSm, textPlayer, textAiSm, textAi, textSizeTop, textTie, textWin } from './variables.js'
+import { height, gridSize, fps, delayEnd, width, cell, stroke, dot, margin, colourBoard, colourBorder, colourDot, colourAi, colourAiLight, colourPlayer, colourPlayerLight, colourTie, sideObject, textSizeCell, textPlayer, textAi, textSizeTop, textTie, textWin } from './variables.js'
 
 import { getColour, getText, getGridX, getGridY } from './getters.js'
+
+import { drawGrid } from './draw.js'
 
 let canvasEl = document.createElement('canvas')
 canvasEl.height = height
@@ -51,20 +53,14 @@ function drawBoard() {
   )
 }
 
-function drawDot(x, y) {
+export function drawDot(x, y) {
   ctx.fillStyle = colourDot
   ctx.beginPath()
   ctx.arc(x, y, dot, 0, Math.PI * 2)
   ctx.fill()
 }
  
-function drawGrid() {
-  for (let i = 0; i < gridSize + 1; i++) {
-    for (let j = 0; j < gridSize + 1; j++) {
-      drawDot(getGridX(j), getGridY(i))
-    }
-  }
-}
+
 
 function drawLine(x0, y0, x1, y1, colour) {
   ctx.strokeStyle = colour
