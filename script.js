@@ -4,16 +4,9 @@ import { getColour, getText, getGridX, getGridY } from './getters.js'
 
 import { drawGrid, highlightGrid } from './grid.js'
 
-let canvasEl = document.createElement('canvas')
-canvasEl.height = height
-canvasEl.width = width
-document.body.appendChild(canvasEl)
-export let canvasRect = canvasEl.getBoundingClientRect()
 
-const ctx = canvasEl.getContext('2d')
-ctx.lineWidth = stroke
-ctx.textAlign = 'center'
-ctx.textBaseline = 'middle'
+
+
 
 let currentCells
 let playersTurn 
